@@ -1,17 +1,20 @@
 package com.reintegra.model;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -34,9 +37,13 @@ public class Postagem {
 	@Size(min=10,max=100)
 	private String area;
 	
-	@ManyToMany
-	@JsonIgnoreProperties("postagem")
-	private Tema tema;
+	@ManyToOne
+	@JsonIgnoreProperties("postagens")
+	private Tema temaRelacionado;
+	
+	@ManyToOne
+	@JsonIgnoreProperties({"minhasPostagens"})
+	private Usuario criador;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new java.sql.Date(System.currentTimeMillis());
@@ -74,11 +81,11 @@ public class Postagem {
 	}
 
 	public Tema getTema() {
-		return tema;
+		return temaRelacionado;
 	}
 
-	public void setTema(Tema tema) {
-		this.tema = tema;
+	public void setTema(Tema temaRelacionado) {
+		this.temaRelacionado = temaRelacionado;
 	}
 
 	public Date getData() {
