@@ -1,13 +1,19 @@
 package com.reintegra.model;
 
-import javax.persistence.Entity;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "temas")
@@ -29,8 +35,17 @@ public class Tema {
 	@Size(min = 10, max = 200)
 	private String localizacao;
 	
+	@OneToMany(mappedBy = "temaRelacionado", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties({"temaRelacionado"})	
+	private List<Postagem> postagens = new ArrayList<>();
 
 	
+	public List<Postagem> getMinhasPostagens() {
+		return postagens;
+	}
+	public void setMinhasPostagens(List<Postagem> postagens) {
+		this.postagens = postagens;
+	}
 	public long getIdTema() {
 		return idTema;
 	}
