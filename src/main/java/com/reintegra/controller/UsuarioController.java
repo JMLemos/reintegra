@@ -16,41 +16,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.reintegra.model.Tema;
-import com.reintegra.repository.TemaRepository;
+import com.reintegra.model.Usuario;
+import com.reintegra.repository.UsuarioRepository;
 
 @RestController
-@RequestMapping("/tema")
-public class TemaController {
-
+@RequestMapping("/Usuario")
+public class UsuarioController {
+	
 	@Autowired
-	private TemaRepository areas;
+	private UsuarioRepository nomeCompleto;
 	
 	@GetMapping
-	public ResponseEntity<List<Tema>> GetAll(){
-		return ResponseEntity.ok(areas.findAll());
+	public ResponseEntity<List<Usuario>> GetAll(){
+		return ResponseEntity.ok(nomeCompleto.findAll());
 	}
-
+	
 	@GetMapping("/{id}")
-	public ResponseEntity<Tema> GetById(@PathVariable long id){
-		return areas.findById(id)
+	public ResponseEntity<Usuario> GetById(@PathVariable long id){
+		return nomeCompleto.findById(id)
 				.map(response -> ResponseEntity.ok(response))
 				.orElse(ResponseEntity.notFound().build());
-	
 	} 
-
+	
 	@PostMapping
-	public ResponseEntity<Tema> post(@Valid @RequestBody Tema areas){
-		return ResponseEntity.status(HttpStatus.CREATED).body(this.areas.save(areas));
+	public ResponseEntity<Usuario> post(@Valid @RequestBody Usuario nomeCompleto){
+		return ResponseEntity.status(HttpStatus.CREATED).body(this.nomeCompleto.save(nomeCompleto));
 	}
 
 	@PutMapping
-	public ResponseEntity<Tema> put(@Valid @RequestBody Tema areas){
-		return ResponseEntity.status(HttpStatus.OK).body(this.areas.save(areas));
+	public ResponseEntity<Usuario> put(@Valid @RequestBody Usuario nomeCompleto){
+		return ResponseEntity.status(HttpStatus.OK).body(this.nomeCompleto.save(nomeCompleto));
 	}
-
+	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
-		this.areas.deleteById(id);
+		this.nomeCompleto.deleteById(id);
 	}
+
+
 }
