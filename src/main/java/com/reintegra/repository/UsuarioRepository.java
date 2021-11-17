@@ -8,8 +8,9 @@ import org.springframework.stereotype.Repository;
 import com.reintegra.model.Usuario;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
-	public Optional <Usuario> findByNomeCompleto(String nomeCompleto);
-	
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+	public Optional<Usuario> findByNomeCompleto(String nomeCompleto);
+
+	public Optional<Usuario> findByEmail(String email);
 
 }
