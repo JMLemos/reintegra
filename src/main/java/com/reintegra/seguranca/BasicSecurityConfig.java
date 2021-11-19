@@ -11,15 +11,18 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@EnableWebSecurity 
-public class BasicSecurityConfig  extends WebSecurityConfigurerAdapter {
-	
+@EnableWebSecurity
+public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
+
 	@Autowired
 	private UserDetailsService userDetailsService;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService);
+
+		auth.inMemoryAuthentication().withUser("reintegra").password(passwordEncoder().encode("grupo1"))
+				.authorities("ROLE_USER");
 	}
 
 	@Bean
@@ -29,15 +32,9 @@ public class BasicSecurityConfig  extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-		.antMatchers("/Usuario/logar").permitAll()
-		.antMatchers("/Usuario/cadastrar").permitAll()
-		.anyRequest().authenticated()
-		.and().httpBasic()
-		.and().sessionManagement()
-		.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-		.and().cors()
-		.and().csrf().disable();
+		http.authorizeRequests().antMatchers("/Usuario/logar").permitAll().antMatchers("/Usuario/cadastrar").permitAll()
+				.anyRequest().authenticated().and().httpBasic().and().sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().cors().and().csrf().disable();
 	}
 
 }
