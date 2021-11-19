@@ -26,15 +26,15 @@ public class Postagem {
 	private long id; 
 	
 	@NotNull
-	@Size(min=5,max=100)
+	@Size(min=2,max=100)
 	private String titulo;
 	
 	@NotNull
-	@Size(min=10,max=500)
+	@Size(min=2,max=500)
 	private String texto;
 	
 	@NotNull
-	@Size(min=10,max=100)
+	@Size(min=2,max=100)
 	private String area;
 	
 	@ManyToOne

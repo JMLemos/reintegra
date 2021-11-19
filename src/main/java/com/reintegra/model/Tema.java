@@ -24,15 +24,15 @@ public class Tema {
 	private long idTema;
 	
 	@NotNull
-	@Size(min = 5, max = 100)
+	@Size(min = 2, max = 100)
 	private String areas;
 	
 	@NotNull
-	@Size(min = 10, max = 500)
+	@Size(min = 2, max = 500)
 	private String tipoVagas;
 	
 	@NotNull
-	@Size(min = 10, max = 200)
+	@Size(min = 2, max = 200)
 	private String localizacao;
 	
 	@OneToMany(mappedBy = "temaRelacionado", cascade = CascadeType.REMOVE)
