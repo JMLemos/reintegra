@@ -10,34 +10,38 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
-@Table(name="usuario")
+@Table(name = "usuario")
 public class Usuario {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idUsuario;
-	
+
 	@NotBlank
-	@Size(min=3, max=100)
 	private String nomeCompleto;
-	
-	@NotBlank	
+
+	@ApiModelProperty(example = "email@email.com.br")
+	@NotNull(message = "O atributo Usuário é Obrigatório!")
+	@Email(message = "O atributo Usuário deve ser um email válido!")
 	private String email;
-	
+
 	@NotBlank
 	private String senha;
-	
+
 	@NotBlank
 	private String tipo;
-	
+
 	@OneToMany(mappedBy = "criador", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties({"criador"})	
+	@JsonIgnoreProperties({ "criador" })
 	private List<Postagem> minhasPostagens = new ArrayList<>();
 
 	public Long getIdUsuario() {
@@ -87,7 +91,5 @@ public class Usuario {
 	public void setMinhasPostagens(List<Postagem> minhasPostagens) {
 		this.minhasPostagens = minhasPostagens;
 	}
-	
-	
 
 }
