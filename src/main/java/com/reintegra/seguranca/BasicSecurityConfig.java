@@ -24,7 +24,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(userDetailsService);
 
 		auth.inMemoryAuthentication().withUser("reintegra").password(passwordEncoder().encode("grupo1"))
-				.authorities("ROLE_USER");
+				.authorities("ROLE_ADMIN");
 	}
 
 	@Bean
