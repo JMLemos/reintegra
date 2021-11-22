@@ -23,7 +23,7 @@ import com.reintegra.repository.UsuarioRepository;
 import com.reintegra.service.UsuarioService;
 import com.reintegra.model.UsuarioLogin;
 @RestController
-@RequestMapping("/Usuario")
+@RequestMapping("/usuario")
 @CrossOrigin("*")
 public class UsuarioController {
 	
