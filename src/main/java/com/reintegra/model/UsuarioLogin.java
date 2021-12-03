@@ -2,6 +2,8 @@ package com.reintegra.model;
 
 public class UsuarioLogin {
 
+	private Long id;
+	
 	private String nomeCompleto;
 
 	private String email;
@@ -11,6 +13,16 @@ public class UsuarioLogin {
 	private String token;
 
 	private String tipo;
+	
+	private String foto;
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 
 	public String getNomeCompleto() {
 		return nomeCompleto;
@@ -50,6 +62,14 @@ public class UsuarioLogin {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }
