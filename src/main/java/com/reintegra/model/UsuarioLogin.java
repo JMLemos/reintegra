@@ -11,6 +11,16 @@ public class UsuarioLogin {
 	private String token;
 
 	private String tipo;
+	
+	private String foto;
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 
 	public String getNomeCompleto() {
 		return nomeCompleto;
