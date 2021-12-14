@@ -34,7 +34,7 @@ public class PostagemController {
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
-	@GetMapping("/area {area}")
+	@GetMapping("/area/{area}")
 	public ResponseEntity<List<Postagem>> GetByArea(@PathVariable String area){
 		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(area));
 }	
@@ -46,7 +46,7 @@ public class PostagemController {
 	}
 	
 	
-	@GetMapping("/titulo {titulo}")
+	@GetMapping("/titulo/{titulo}")
 		public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo){
 			return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
 	}	
