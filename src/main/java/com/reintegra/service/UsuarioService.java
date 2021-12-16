@@ -49,11 +49,11 @@ public class UsuarioService {
 
 		if (usuario.isPresent()) {
 			if (compararSenhas(usuarioLogin.get().getSenha(), usuario.get().getSenha())) {
+				usuarioLogin.get().setToken(generatorBasicToken(usuarioLogin.get().getEmail(), usuarioLogin.get().getSenha()));
 				usuarioLogin.get().setId(usuario.get().getIdUsuario());				
 				usuarioLogin.get().setNomeCompleto(usuario.get().getNomeCompleto());
 				usuarioLogin.get().setFoto(usuario.get().getFoto());
 				usuarioLogin.get().setSenha(usuario.get().getSenha());
-				usuarioLogin.get().setToken(generatorBasicToken(usuarioLogin.get().getEmail(), usuarioLogin.get().getSenha()));
                 usuarioLogin.get().setTipo(usuario.get().getTipo());
 				return usuarioLogin;
 			}

@@ -20,9 +20,7 @@ import com.reintegra.repository.PostagemRepository;
 
 @RestController
 @RequestMapping("/postagens")
-@CrossOrigin("*")
-
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PostagemController {
 	
 	private static final HttpStatus CREATED_HTTP_STATUS= null;
