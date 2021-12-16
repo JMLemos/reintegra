@@ -36,14 +36,15 @@ public class Tema {
 	private String localizacao;
 	
 	@OneToMany(mappedBy = "temaRelacionado", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties({"temaRelacionado"})	
+	@JsonIgnoreProperties({"temaRelacionado"})
 	private List<Postagem> postagens = new ArrayList<>();
 
 	
-	public List<Postagem> getMinhasPostagens() {
+	
+	public List<Postagem> getPostagens() {
 		return postagens;
 	}
-	public void setMinhasPostagens(List<Postagem> postagens) {
+	public void setPostagens(List<Postagem> postagens) {
 		this.postagens = postagens;
 	}
 	public long getIdTema() {

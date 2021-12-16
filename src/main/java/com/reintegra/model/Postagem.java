@@ -80,12 +80,20 @@ public class Postagem {
 		this.area = area;
 	}
 
-	public Tema getTema() {
+	public Tema getTemaRelacionado() {
 		return temaRelacionado;
 	}
 
-	public void setTema(Tema temaRelacionado) {
+	public void setTemaRelacionado(Tema temaRelacionado) {
 		this.temaRelacionado = temaRelacionado;
+	}
+
+	public Usuario getCriador() {
+		return criador;
+	}
+
+	public void setCriador(Usuario criador) {
+		this.criador = criador;
 	}
 
 	public Date getData() {
@@ -95,5 +103,7 @@ public class Postagem {
 	public void setData(Date data) {
 		this.data = data;
 	}
+
+	
 
 }
