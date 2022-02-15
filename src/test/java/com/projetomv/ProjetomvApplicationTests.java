@@ -1,10 +1,10 @@
-package com.reintegra;
+package com.projetomv;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ReintegraApplicationTests {
+class ProjetomvApplicationTests {
 
 	@Test
 	void contextLoads() {
